@@ -15,16 +15,46 @@ ok      command-line-arguments  4.320s
 
  */
 
-func BenchmarkTwosum(t *testing.B) {
+func BenchmarkTwosum10001(t *testing.B) {
+	t.Log("two sum target is 10001")
 	for i := 0; i < t.N; i++ {
-		twoSum1([]int{1, 3, 7, 8}, 9)
+		//twoSum1(getData(), 19999)
+		twoSum1(getData(), 10001)
 	}
 }
 
-func BenchmarkTwosumMy(t *testing.B) {
+func BenchmarkTwosumMy10001(t *testing.B) {
+	t.Log("two sum my target is 10001")
+
 	for i := 0; i < t.N; i++ {
-		twoSumMy1([]int{1, 3, 7, 8}, 9)
+		//twoSumMy1(getData(), 19999)
+		twoSumMy1(getData(), 10001)
 	}
+}
+
+func BenchmarkTwosum19999(t *testing.B) {
+	t.Log("two sum target is 19999")
+	for i := 0; i < t.N; i++ {
+		twoSum1(getData(), 19999)
+		//twoSum1(getData(), 10001)
+	}
+}
+
+func BenchmarkTwosumMy19999(t *testing.B) {
+	t.Log("two sum my target is 19999")
+
+	for i := 0; i < t.N; i++ {
+		twoSumMy1(getData(), 19999)
+		//twoSumMy1(getData(), 10001)
+	}
+}
+
+func getData()[]int{
+	d :=make([]int,10000)
+	for i:=1;i<10000;i++{
+		d[i]=i
+	}
+	return d
 }
 
 func twoSumMy1(nums []int, target int) []int {
