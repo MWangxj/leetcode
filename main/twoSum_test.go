@@ -4,12 +4,32 @@ import "testing"
 
 /**
 
+192:main xianjinwang$ go test twoSum_test.go -bench=. -benchmem
 goos: darwin
 goarch: amd64
-BenchmarkTwosum-4       20000000                94.3 ns/op            16 B/op          1 allocs/op
-BenchmarkTwosumMy-4     100000000               23.0 ns/op            16 B/op          1 allocs/op
+BenchmarkTwosum10001-4              5000            271090 ns/op          401514 B/op          6 allocs/op
+--- BENCH: BenchmarkTwosum10001-4
+        twoSum_test.go:19: two sum target is 10001
+        twoSum_test.go:19: two sum target is 10001
+        twoSum_test.go:19: two sum target is 10001
+BenchmarkTwosumMy10001-4           50000             28983 ns/op           81936 B/op          2 allocs/op
+--- BENCH: BenchmarkTwosumMy10001-4
+        twoSum_test.go:27: two sum my target is 10001
+        twoSum_test.go:27: two sum my target is 10001
+        twoSum_test.go:27: two sum my target is 10001
+        twoSum_test.go:27: two sum my target is 10001
+BenchmarkTwosum19999-4              3000            528345 ns/op          404178 B/op         12 allocs/op
+--- BENCH: BenchmarkTwosum19999-4
+        twoSum_test.go:36: two sum target is 19999
+        twoSum_test.go:36: two sum target is 19999
+        twoSum_test.go:36: two sum target is 19999
+BenchmarkTwosumMy19999-4              50          28169564 ns/op           81941 B/op          1 allocs/op
+--- BENCH: BenchmarkTwosumMy19999-4
+        twoSum_test.go:44: two sum my target is 19999
+        twoSum_test.go:44: two sum my target is 19999
 PASS
-ok      command-line-arguments  4.320s
+ok      command-line-arguments  6.235s
+
 
 
 
