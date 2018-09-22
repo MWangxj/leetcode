@@ -39,7 +39,7 @@ func twoSumMy1(nums []int, target int) []int {
 }
 
 func twoSum1(nums []int, target int) []int {
-	hashMap := make(map[int]int)
+	hashMap := make(map[int]int,len(nums))
 	for i, num := range nums {
 		if index, ok := hashMap[num]; ok {
 			return []int{index, i}
