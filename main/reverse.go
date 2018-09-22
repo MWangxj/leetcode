@@ -2,6 +2,7 @@ package main
 
 import (
 	`fmt`
+	"math"
 	`strconv`
 )
 
@@ -24,18 +25,18 @@ Output: 21
 
  */
 
-func reverse(x int) int {
-	if x<0 {
+func reverseMy(x int) int {
+	if x < 0 {
 		r := rever(strconv.Itoa(-x))
-		i,_:=strconv.Atoi(r)
-		if i>1<<31{
+		i, _ := strconv.Atoi(r)
+		if i > 1<<31 {
 			return 0
 		}
 		return -i
-	}else {
+	} else {
 		r := rever(strconv.Itoa(x))
-		i,_:=strconv.Atoi(r)
-		if i>1<<31{
+		i, _ := strconv.Atoi(r)
+		if i > 1<<31 {
 			return 0
 		}
 		return i
@@ -44,13 +45,25 @@ func reverse(x int) int {
 
 func rever(s string) string {
 	b := []byte(s)
-	for i:=0;i<len(b)/2;i++{
-		b[i],b[len(b)-1-i] = s[len(s)-1-i],s[i]
+	for i := 0; i < len(b)/2; i++ {
+		b[i], b[len(b)-1-i] = s[len(s)-1-i], s[i]
 	}
 	return string(b)
 }
 
-func main()  {
+func reverse(x int) int {
+	result := 0
+	for x != 0 {
+		result = 10*result + x%10
+		x /= 10
+	}
+	if result > math.MaxInt32 || result < math.MinInt32 {
+		return 0
+	}
+	return result
+}
+
+func main() {
 	i := -321
 	fmt.Println(reverse(i))
 }
