@@ -4,7 +4,7 @@ import "testing"
 
 /**
 
-192:main xianjinwang$ go test twoSum_test.go -bench=. -benchmem
+192:main xianjinwang$ go test1 twoSum_test.go -bench=. -benchmem
 goos: darwin
 goarch: amd64
 BenchmarkTwosum10001-4              5000            271090 ns/op          401514 B/op          6 allocs/op
