@@ -35,35 +35,35 @@ ok      command-line-arguments  6.235s
 
  */
 
-func BenchmarkTwosum10001(t *testing.B) {
-	t.Log("two sum target is 10001")
-	for i := 0; i < t.N; i++ {
+func BenchmarkTwosum10001(b *testing.B) {
+	b.Log("two sum target is 10001")
+	for i := 0; i < b.N; i++ {
 		//twoSum1(getData(), 19999)
 		twoSum1(getData(), 10001)
 	}
 }
 
-func BenchmarkTwosumMy10001(t *testing.B) {
-	t.Log("two sum my target is 10001")
+func BenchmarkTwosumMy10001(b *testing.B) {
+	b.Log("two sum my target is 10001")
 
-	for i := 0; i < t.N; i++ {
+	for i := 0; i < b.N; i++ {
 		//twoSumMy1(getData(), 19999)
 		twoSumMy1(getData(), 10001)
 	}
 }
 
-func BenchmarkTwosum19999(t *testing.B) {
-	t.Log("two sum target is 19999")
-	for i := 0; i < t.N; i++ {
+func BenchmarkTwosum19999(b *testing.B) {
+	b.Log("two sum target is 19999")
+	for i := 0; i < b.N; i++ {
 		twoSum1(getData(), 19999)
 		//twoSum1(getData(), 10001)
 	}
 }
 
-func BenchmarkTwosumMy19999(t *testing.B) {
-	t.Log("two sum my target is 19999")
+func BenchmarkTwosumMy19999(b *testing.B) {
+	b.Log("two sum my target is 19999")
 
-	for i := 0; i < t.N; i++ {
+	for i := 0; i < b.N; i++ {
 		twoSumMy1(getData(), 19999)
 		//twoSumMy1(getData(), 10001)
 	}

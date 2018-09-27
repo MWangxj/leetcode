@@ -56,14 +56,14 @@ func reverse1(x int) int {
 	return result
 }
 
-func BenchmarkReverse(t *testing.B) {
-	for i := 0; i < t.N; i++ {
+func BenchmarkReverse(b *testing.B) {
+	for i := 0; i < b.N; i++ {
 		reverse1(-321)
 	}
 }
 
-func BenchmarkReverseMy(t *testing.B) {
-	for i := 0; i < t.N; i++ {
+func BenchmarkReverseMy(b *testing.B) {
+	for i := 0; i < b.N; i++ {
 		reverseMy2(-321)
 	}
 }
