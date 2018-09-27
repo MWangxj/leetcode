@@ -21,14 +21,14 @@ All the integers in the array will be in the range of [-10000, 10000].
  */
 
 func arrayPairSumMy(nums []int) int {
-	sort(nums)
+	sortNums(nums)
 	result := 0
 	for i := 0; i < len(nums); i += 2 {
 		result += nums[i]
 	}
 	return result
 }
-func sort(nums []int) {
+func sortNums(nums []int) {
 	for i := 0; i < len(nums)-1; i++ {
 		for j := i + 1; j < len(nums); j++ {
 			if nums[i] > nums[j] {
