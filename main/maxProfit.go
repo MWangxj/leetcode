@@ -25,34 +25,34 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
  */
 
 func maxProfit(prices []int) int {
-	if len(prices)==0 {
+	if len(prices) == 0 {
 		return 0
 	}
 	type data struct {
 		value int
 		index int
 	}
-	min := &data{prices[0],0}
-	max := &data{prices[0],0}
-	l:=len(prices)
-	for i:=0;i<l;i++{
-		if min.value>prices[i] {
-			min.value=prices[i]
-			min.index=i
+	min := &data{prices[0], 0}
+	max := &data{prices[0], 0}
+	l := len(prices)
+	for i := 0; i < l; i++ {
+		if min.value > prices[i] {
+			min.value = prices[i]
+			min.index = i
 			continue
 		}
-		if max.value<prices[i] {
-			max.value=prices[i]
-			max.index=i
+		if max.value < prices[i] {
+			max.value = prices[i]
+			max.index = i
 			continue
 		}
 	}
-	if min.index<max.index {
-		return max.value-min.value
+	if min.index < max.index {
+		return max.value - min.value
 	}
 	return 0
 }
 
-func main()  {
-	fmt.Println(maxProfit([]int{2,4,1}))
+func main() {
+	fmt.Println(maxProfit([]int{2, 4, 1}))
 }
