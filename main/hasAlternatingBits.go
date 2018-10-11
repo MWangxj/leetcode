@@ -50,7 +50,7 @@ func hasAlternatingBits(n int) bool {
 func hasAlternatingBitsMy(n int) bool {
 	b := fmt.Sprintf("%b", n)
 	if len(b) < 2 {
-		return false
+		return true
 	}
 	for i := 0; i < len(b)-1; i++ {
 		if b[i] == b[i+1] {
