@@ -89,14 +89,14 @@ func isValid1(s string) bool {
 	return len(stack) == 0
 }
 
-func BenchmarkIsValid(t *testing.B) {
-	for i := 0; i < t.N; i++ {
+func BenchmarkIsValid(b *testing.B) {
+	for i := 0; i < b.N; i++ {
 		isValid1("[]{}()")
 	}
 }
 
-func BenchmarkIsValidMy(t *testing.B) {
-	for i := 0; i < t.N; i++ {
+func BenchmarkIsValidMy(b *testing.B) {
+	for i := 0; i < b.N; i++ {
 		isValidMy("[]{}()")
 	}
 }

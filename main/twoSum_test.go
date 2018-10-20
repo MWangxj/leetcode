@@ -1,78 +1,80 @@
 package main
 
-import "testing"
+import (
+	"math/rand"
+	"testing"
+)
 
 /**
 
-192:main xianjinwang$ go test1 twoSum_test.go -bench=. -benchmem
 goos: darwin
 goarch: amd64
-BenchmarkTwosum10001-4              5000            271090 ns/op          401514 B/op          6 allocs/op
+BenchmarkTwosum10001-4     	    5000	    374406 ns/op	  401456 B/op	       4 allocs/op
 --- BENCH: BenchmarkTwosum10001-4
-        twoSum_test.go:19: two sum target is 10001
-        twoSum_test.go:19: two sum target is 10001
-        twoSum_test.go:19: two sum target is 10001
-BenchmarkTwosumMy10001-4           50000             28983 ns/op           81936 B/op          2 allocs/op
+	twoSum_test.go:42: two sum target is 10001
+	twoSum_test.go:42: two sum target is 10001
+	twoSum_test.go:42: two sum target is 10001
+BenchmarkTwosumMy10001-4   	    2000	    832418 ns/op	   81936 B/op	       2 allocs/op
 --- BENCH: BenchmarkTwosumMy10001-4
-        twoSum_test.go:27: two sum my target is 10001
-        twoSum_test.go:27: two sum my target is 10001
-        twoSum_test.go:27: two sum my target is 10001
-        twoSum_test.go:27: two sum my target is 10001
-BenchmarkTwosum19999-4              3000            528345 ns/op          404178 B/op         12 allocs/op
+	twoSum_test.go:50: two sum my target is 10001
+	twoSum_test.go:50: two sum my target is 10001
+	twoSum_test.go:50: two sum my target is 10001
+BenchmarkTwosum19999-4     	    5000	    356778 ns/op	  401456 B/op	       4 allocs/op
 --- BENCH: BenchmarkTwosum19999-4
-        twoSum_test.go:36: two sum target is 19999
-        twoSum_test.go:36: two sum target is 19999
-        twoSum_test.go:36: two sum target is 19999
-BenchmarkTwosumMy19999-4              50          28169564 ns/op           81941 B/op          1 allocs/op
+	twoSum_test.go:59: two sum target is 19999
+	twoSum_test.go:59: two sum target is 19999
+	twoSum_test.go:59: two sum target is 19999
+BenchmarkTwosumMy19999-4   	    2000	    569115 ns/op	   81936 B/op	       2 allocs/op
 --- BENCH: BenchmarkTwosumMy19999-4
-        twoSum_test.go:44: two sum my target is 19999
-        twoSum_test.go:44: two sum my target is 19999
+	twoSum_test.go:67: two sum my target is 19999
+	twoSum_test.go:67: two sum my target is 19999
+	twoSum_test.go:67: two sum my target is 19999
 PASS
-ok      command-line-arguments  6.235s
+ok  	command-line-arguments	6.687s
 
 
 
 
  */
 
-func BenchmarkTwosum10001(t *testing.B) {
-	t.Log("two sum target is 10001")
-	for i := 0; i < t.N; i++ {
+func BenchmarkTwosum10001(b *testing.B) {
+	b.Log("two sum target is 10001")
+	for i := 0; i < b.N; i++ {
 		//twoSum1(getData(), 19999)
 		twoSum1(getData(), 10001)
 	}
 }
 
-func BenchmarkTwosumMy10001(t *testing.B) {
-	t.Log("two sum my target is 10001")
+func BenchmarkTwosumMy10001(b *testing.B) {
+	b.Log("two sum my target is 10001")
 
-	for i := 0; i < t.N; i++ {
+	for i := 0; i < b.N; i++ {
 		//twoSumMy1(getData(), 19999)
 		twoSumMy1(getData(), 10001)
 	}
 }
 
-func BenchmarkTwosum19999(t *testing.B) {
-	t.Log("two sum target is 19999")
-	for i := 0; i < t.N; i++ {
+func BenchmarkTwosum19999(b *testing.B) {
+	b.Log("two sum target is 19999")
+	for i := 0; i < b.N; i++ {
 		twoSum1(getData(), 19999)
 		//twoSum1(getData(), 10001)
 	}
 }
 
-func BenchmarkTwosumMy19999(t *testing.B) {
-	t.Log("two sum my target is 19999")
+func BenchmarkTwosumMy19999(b *testing.B) {
+	b.Log("two sum my target is 19999")
 
-	for i := 0; i < t.N; i++ {
+	for i := 0; i < b.N; i++ {
 		twoSumMy1(getData(), 19999)
 		//twoSumMy1(getData(), 10001)
 	}
 }
 
-func getData()[]int{
-	d :=make([]int,10000)
-	for i:=1;i<10000;i++{
-		d[i]=i
+func getData() []int {
+	d := make([]int, 10000)
+	for i := 1; i < 10000; i++ {
+		d[i] = rand.Intn(100000)
 	}
 	return d
 }
@@ -89,7 +91,7 @@ func twoSumMy1(nums []int, target int) []int {
 }
 
 func twoSum1(nums []int, target int) []int {
-	hashMap := make(map[int]int,len(nums))
+	hashMap := make(map[int]int, len(nums))
 	for i, num := range nums {
 		if index, ok := hashMap[num]; ok {
 			return []int{index, i}
