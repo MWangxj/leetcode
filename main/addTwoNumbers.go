@@ -26,9 +26,8 @@ type ListNode struct {
 }
 
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-	add, res := 0, &ListNode{}
-	current := res
-	for l1.Next == nil || l2.Next == nil {
+	add, index, res := 0, 0, &ListNode{}
+	for l1.Next != nil || l2.Next != nil {
 		sum := l1.Val + l2.Val + add
 		if sum > 9 {
 			add = 1
@@ -36,21 +35,31 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		} else {
 			add = 0
 		}
-		current.Val = sum
-		current.Next=&ListNode{}
-		current=current.Next
+		assignByIndex(index, sum, res)
+		index++
 		l1 = l1.Next
 		l2 = l2.Next
 	}
-	if l1.Next==nil {
-		current.Next=l2
-	}else {
-		current.Next=l1
+	if l1.Next == nil {
+
+	} else {
 	}
 	return res
 }
 
-func main()  {
-	res := addTwoNumbers(&ListNode{1,&ListNode{2,&ListNode{3,nil}}},&ListNode{1,&ListNode{2,&ListNode{3,nil}}})
+func assignByIndex(index, val int, l *ListNode) {
+	if index == 0 {
+		l.Val = val
+		return
+	}
+	if l.Next == nil {
+		l.Next = &ListNode{}
+	}
+	index -= 1
+	assignByIndex(index, val, l.Next)
+}
+
+func main() {
+	res := addTwoNumbers(&ListNode{1, &ListNode{2, &ListNode{3, nil}}}, &ListNode{1, &ListNode{2, &ListNode{3, nil}}})
 	fmt.Println(res)
 }
