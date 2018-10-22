@@ -19,11 +19,11 @@ Output: 1->1->2->3->4->4
 * }
 */
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
-func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
-	return nil
-}
+// type ListNode struct {
+// 	Val  int
+// 	Next *ListNode
+// }
+//
+// func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
+// 	return nil
+// }
