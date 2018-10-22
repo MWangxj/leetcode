@@ -1,26 +1,32 @@
 package main
 
-import (
-	`fmt`
-)
+import "testing"
 
 /**
 
+goos: darwin
+goarch: amd64
+BenchmarkLetterCombinations1-4              1000           1189410 ns/op         1177555 B/op      15992 allocs/op
+BenchmarkLetterCombinationsMy1-4            2000            611461 ns/op          309128 B/op      12776 allocs/op
+PASS
+ok      command-line-arguments  2.612s
 
-Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent.
-
-A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
-
-
-
-Example:
-
-Input: "23"
-Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
 
  */
 
-func letterCombinations(digits string) []string {
+func BenchmarkLetterCombinations1(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		letterCombinations1("23456789")
+	}
+}
+
+func BenchmarkLetterCombinationsMy1(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		letterCombinationsMy1("23456789")
+	}
+}
+
+func letterCombinations1(digits string) []string {
 	res := make([]string, 0)
 	digitWordsMap := map[string]string{
 		"2": "abc",
@@ -49,7 +55,7 @@ func letterCombinations(digits string) []string {
 	return res
 }
 
-func letterCombinationsMy(digits string) []string {
+func letterCombinationsMy1(digits string) []string {
 	if len(digits) == 0 {
 		return []string{}
 	}
@@ -76,11 +82,11 @@ func letterCombinationsMy(digits string) []string {
 	if len(digits) == 1 {
 		return mm[0]
 	}
-	mutArray2Array(mm, &res)
+	mutArray2Array1(mm, &res)
 	return res
 }
 
-func mutArray2Array(mut [][]string, res *[]string) {
+func mutArray2Array1(mut [][]string, res *[]string) {
 	if len(mut) < 2 {
 		if len(mut) == 1 {
 			len1, len2 := len(*res), len(mut[0])
@@ -122,9 +128,5 @@ func mutArray2Array(mut [][]string, res *[]string) {
 		*res = append(temp1)
 	}
 	mut = mut[2:]
-	mutArray2Array(mut, res)
-}
-
-func main() {
-	fmt.Println(letterCombinations("2"))
+	mutArray2Array1(mut, res)
 }
