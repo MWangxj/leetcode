@@ -26,40 +26,40 @@ type ListNode struct {
 }
 
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-	add, index, res := 0, 0, &ListNode{}
-	for l1.Next != nil || l2.Next != nil {
-		sum := l1.Val + l2.Val + add
+	add, res := 0, &ListNode{}
+	current := res
+	for l1 != nil || l2 != nil {
+		a, b := 0, 0
+		if l1 != nil {
+			a = l1.Val
+		}
+		if l2 != nil {
+			b = l2.Val
+		}
+		sum := a + b + add
 		if sum > 9 {
 			add = 1
-			sum /= 9
 		} else {
 			add = 0
 		}
-		assignByIndex(index, sum, res)
-		index++
-		l1 = l1.Next
-		l2 = l2.Next
+		current.Next = &ListNode{Val: sum % 10}
+		current = current.Next
+		if l1 != nil {
+			l1 = l1.Next
+		}
+		if l2 != nil {
+			l2 = l2.Next
+		}
 	}
-	if l1.Next == nil {
-
+	if add > 0 {
+		current.Next = &ListNode{Val: add}
 	} else {
+		current.Next = nil
 	}
-	return res
-}
-
-func assignByIndex(index, val int, l *ListNode) {
-	if index == 0 {
-		l.Val = val
-		return
-	}
-	if l.Next == nil {
-		l.Next = &ListNode{}
-	}
-	index -= 1
-	assignByIndex(index, val, l.Next)
+	return res.Next
 }
 
 func main() {
-	res := addTwoNumbers(&ListNode{1, &ListNode{2, &ListNode{3, nil}}}, &ListNode{1, &ListNode{2, &ListNode{3, nil}}})
+	res := addTwoNumbers(&ListNode{2, &ListNode{2, &ListNode{3, nil}}}, &ListNode{9, &ListNode{2, &ListNode{9, nil}}})
 	fmt.Println(res)
 }
